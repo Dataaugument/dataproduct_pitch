@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Coursera Data Product Class Project</title>
+  <title>Wafer Uniformity Analysis</title>
   <meta charset="utf-8">
-  <meta name="description" content="Coursera Data Product Class Project">
+  <meta name="description" content="Wafer Uniformity Analysis">
   <meta name="author" content="Rick Young">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -40,8 +40,8 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Coursera Data Product Class Project</h1>
-    <h2>Wafer Uniformity Analysis</h2>
+    <h1>Wafer Uniformity Analysis</h1>
+    <h2>created with Slidify</h2>
     <p>Rick Young<br/>DR Manager</p>
   </hgroup>
   <article></article>  
@@ -116,10 +116,11 @@
   <article data-timings="">
     <ol class = "build incremental">
 <li>Preload with four wafer data</li>
-<li>Select wafer data for comparison with input selector</li>
+<li>Select wafer data for comparison with input selector widget</li>
 <li>Compare the wafer uniformity in Boxplot</li>
 <li>Compare the wafer uniformity across radius</li>
-<li>Fit the wafer radial uniformity with linear or GMA methods(tbd)</li>
+<li>Fit the wafer radial uniformity with linear or GMA methods</li>
+<li>Bonus material with this report: rChart comparison of wafer uniformity</li>
 </ol>
 
   </article>
@@ -133,15 +134,11 @@
   <article data-timings="">
     <pre><code class="r">wafers &lt;-read.csv(&quot;allwaferdata.csv&quot;, header = TRUE)
 require(ggplot2)
-ggplot(wafers, aes(factor(id),CD)) + geom_boxplot(aes(fill = factor(id)))
+p &lt;- ggplot(wafers, aes(factor(id),CD)) + geom_boxplot(aes(fill = factor(id))) + labs (title = &quot;Uniformity Comparison in Boxplot&quot;) + xlab(&quot; Wafer ID&quot;) + ylab(&quot;Critical Dimension (nm)&quot;)
+p
 </code></pre>
 
 <p><img src="assets/fig/simple-plot-1.png" title="plot of chunk simple-plot" alt="plot of chunk simple-plot" style="display: block; margin: auto;" /></p>
-
-<pre><code class="r">ggplot(wafers, aes(x=r, y= CD)) + geom_point(aes(color = factor(id)))
-</code></pre>
-
-<p><img src="assets/fig/simple-plot-2.png" title="plot of chunk simple-plot" alt="plot of chunk simple-plot" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -152,15 +149,15 @@ ggplot(wafers, aes(factor(id),CD)) + geom_boxplot(aes(fill = factor(id)))
     <h2>Interactive Wafer Uniformity Comparison</h2>
   </hgroup>
   <article data-timings="">
-    <div id = 'chart1d477505cda' class = 'rChart nvd3'></div>
+    <div id = 'chart934743d4584' class = 'rChart nvd3'></div>
 
 <script type='text/javascript'>
  $(document).ready(function(){
-      drawchart1d477505cda()
+      drawchart934743d4584()
     });
-    function drawchart1d477505cda(){  
+    function drawchart934743d4584(){  
       var opts = {
- "dom": "chart1d477505cda",
+ "dom": "chart934743d4584",
 "width":    800,
 "height":    400,
 "x": "r",
@@ -168,7 +165,7 @@ ggplot(wafers, aes(factor(id),CD)) + geom_boxplot(aes(fill = factor(id)))
 "group": "id",
 "xlim": [      0,    150 ],
 "type": "scatterChart",
-"id": "chart1d477505cda" 
+"id": "chart934743d4584" 
 },
         data = [
  {
@@ -2444,7 +2441,7 @@ ggplot(wafers, aes(factor(id),CD)) + geom_boxplot(aes(fill = factor(id)))
         
           
         chart.xAxis
-  .axisLabel("CD across wafer (mm)")
+  .axisLabel("Across Wafer Radius (mm)")
 
         
         

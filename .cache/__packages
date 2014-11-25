@@ -3,6 +3,8 @@ dplyr
 ggplot2
 mapproj
 maps
+mgcv
+nlme
 rCharts
 shiny
 shinyapps

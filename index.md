@@ -1,6 +1,6 @@
 ---
-title       : Coursera Data Product Class Project
-subtitle    : Wafer Uniformity Analysis
+title       : Wafer Uniformity Analysis
+subtitle    : created with Slidify
 author      : Rick Young
 job         : DR Manager
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -42,10 +42,11 @@ Yes, the requirement across the 300 mm wafer is in the order of 2nm!
 
 ## Function of the Shiny Application
 > 1. Preload with four wafer data
-> 2. Select wafer data for comparison with input selector
+> 2. Select wafer data for comparison with input selector widget
 > 3. Compare the wafer uniformity in Boxplot
 > 4. Compare the wafer uniformity across radius
-> 5. Fit the wafer radial uniformity with linear or GMA methods(tbd)
+> 5. Fit the wafer radial uniformity with linear or GMA methods
+> 6. Bonus material with this report: rChart comparison of wafer uniformity
 
 ---
 
@@ -54,29 +55,24 @@ Yes, the requirement across the 300 mm wafer is in the order of 2nm!
 ```r
 wafers <-read.csv("allwaferdata.csv", header = TRUE)
 require(ggplot2)
-ggplot(wafers, aes(factor(id),CD)) + geom_boxplot(aes(fill = factor(id)))
+p <- ggplot(wafers, aes(factor(id),CD)) + geom_boxplot(aes(fill = factor(id))) + labs (title = "Uniformity Comparison in Boxplot") + xlab(" Wafer ID") + ylab("Critical Dimension (nm)")
+p
 ```
 
 <img src="assets/fig/simple-plot-1.png" title="plot of chunk simple-plot" alt="plot of chunk simple-plot" style="display: block; margin: auto;" />
-
-```r
-ggplot(wafers, aes(x=r, y= CD)) + geom_point(aes(color = factor(id)))
-```
-
-<img src="assets/fig/simple-plot-2.png" title="plot of chunk simple-plot" alt="plot of chunk simple-plot" style="display: block; margin: auto;" />
 
 --- 
 
 ## Interactive Wafer Uniformity Comparison
 
-<div id = 'chart1d477505cda' class = 'rChart nvd3'></div>
+<div id = 'chart934743d4584' class = 'rChart nvd3'></div>
 <script type='text/javascript'>
  $(document).ready(function(){
-      drawchart1d477505cda()
+      drawchart934743d4584()
     });
-    function drawchart1d477505cda(){  
+    function drawchart934743d4584(){  
       var opts = {
- "dom": "chart1d477505cda",
+ "dom": "chart934743d4584",
 "width":    800,
 "height":    400,
 "x": "r",
@@ -84,7 +80,7 @@ ggplot(wafers, aes(x=r, y= CD)) + geom_point(aes(color = factor(id)))
 "group": "id",
 "xlim": [      0,    150 ],
 "type": "scatterChart",
-"id": "chart1d477505cda" 
+"id": "chart934743d4584" 
 },
         data = [
  {
@@ -2360,7 +2356,7 @@ ggplot(wafers, aes(x=r, y= CD)) + geom_point(aes(color = factor(id)))
         
           
         chart.xAxis
-  .axisLabel("CD across wafer (mm)")
+  .axisLabel("Across Wafer Radius (mm)")
 
         
         
